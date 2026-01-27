@@ -1,4 +1,7 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {};
+const nextConfig = {
+    // Force Vercel build
+    reactStrictMode: true,
+};
 
 export default nextConfig;
