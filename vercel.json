@@ -10,7 +10,7 @@
         },
         {
             "path": "/api/commodities?force=true",
-            "schedule": "*/30 * * * *"
+            "schedule": "0 9 * * *"
         }
     ]
 }
