@@ -3,6 +3,10 @@
         {
             "path": "/api/ipo?force=true",
             "schedule": "0 7 * * *"
+        },
+        {
+            "path": "/api/real-estate?force=true",
+            "schedule": "0 8 * * *"
         }
     ]
 }
