@@ -13,7 +13,7 @@ export interface CommodityPrice {
 }
 
 interface CommodityConfig {
-    symbol: string;
+    symbol: string;        // Gold-API.com 심볼 (XAU, XAG, etc.)
     name: string;
     nameEn: string;
     unit: string;
@@ -21,34 +21,29 @@ interface CommodityConfig {
     icon: string;
 }
 
+// Gold-API.com 지원 귀금속 (API 키 불필요)
 export const COMMODITIES_CONFIG: CommodityConfig[] = [
-    { symbol: 'micro_gold', name: '금 (미니)', nameEn: 'Micro Gold', unit: 'oz', unitFull: 'ounce', icon: '🥇' },
-    { symbol: 'micro_silver', name: '은 (미니)', nameEn: 'Micro Silver', unit: 'oz', unitFull: 'ounce', icon: '🥈' },
-    { symbol: 'natural_gas', name: '천연가스', nameEn: 'Natural Gas', unit: 'MMBtu', unitFull: 'MMBtu', icon: '🔥' },
-    { symbol: 'lumber', name: '목재', nameEn: 'Lumber', unit: 'bd ft', unitFull: 'board feet', icon: '🪵' },
-    { symbol: 'live_cattle', name: '생우', nameEn: 'Live Cattle', unit: 'lb', unitFull: 'pound', icon: '🐄' },
-    { symbol: 'orange_juice', name: '오렌지주스', nameEn: 'Orange Juice', unit: 'lb', unitFull: 'pound', icon: '🍊' },
+    { symbol: 'XAU', name: '금', nameEn: 'Gold', unit: 'oz', unitFull: 'ounce', icon: '🥇' },
+    { symbol: 'XAG', name: '은', nameEn: 'Silver', unit: 'oz', unitFull: 'ounce', icon: '🥈' },
+    { symbol: 'XPT', name: '백금', nameEn: 'Platinum', unit: 'oz', unitFull: 'ounce', icon: '⚪' },
+    { symbol: 'XPD', name: '팔라듐', nameEn: 'Palladium', unit: 'oz', unitFull: 'ounce', icon: '🔷' },
 ];
 
-interface ApiNinjasResponse {
+interface GoldApiResponse {
     name: string;
     price: number;
-    currency: string;
-    unit: string;
+    symbol: string;
+    updatedAt: string;
+    updatedAtReadable: string;
 }
 
 async function fetchSingleCommodity(
-    symbol: string,
-    config: CommodityConfig,
-    apiKey: string
+    config: CommodityConfig
 ): Promise<CommodityPrice | null> {
     try {
-        const url = `https://api.api-ninjas.com/v1/commodityprice?name=${symbol}`;
+        const url = `https://api.gold-api.com/price/${config.symbol}`;
 
-        const response = await axios.get<ApiNinjasResponse>(url, {
-            headers: {
-                'X-Api-Key': apiKey,
-            },
+        const response = await axios.get<GoldApiResponse>(url, {
             timeout: 5000,
         });
 
@@ -59,31 +54,24 @@ async function fetchSingleCommodity(
             name: config.name,
             nameEn: config.nameEn,
             price: data.price,
-            currency: data.currency || 'USD',
+            currency: 'USD',
             unit: config.unit,
             unitFull: config.unitFull,
             icon: config.icon,
-            updatedAt: new Date().toISOString(),
+            updatedAt: data.updatedAt || new Date().toISOString(),
         };
     } catch (error: any) {
-        console.error(`[Commodity] Failed to fetch ${symbol}:`, error.message);
+        console.error(`[Commodity] Failed to fetch ${config.symbol}:`, error.message);
         return null;
     }
 }
 
 export async function fetchCommodityPrices(): Promise<CommodityPrice[]> {
-    const apiKey = process.env.COMMODITY_API_KEY;
-
-    if (!apiKey) {
-        console.error('[Commodity] API key not found. Set COMMODITY_API_KEY in .env.local');
-        return [];
-    }
-
-    console.log('[Commodity] Fetching commodity prices...');
+    console.log('[Commodity] Fetching commodity prices from Gold-API.com...');
 
     // 병렬로 모든 원자재 조회
     const promises = COMMODITIES_CONFIG.map(config =>
-        fetchSingleCommodity(config.symbol, config, apiKey)
+        fetchSingleCommodity(config)
     );
 
     const results = await Promise.allSettled(promises);
