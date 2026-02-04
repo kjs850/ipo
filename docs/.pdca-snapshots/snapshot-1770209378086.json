@@ -1,0 +1,151 @@
+{
+  "timestamp": "2026-02-04T12:49:38.086Z",
+  "reason": "compaction",
+  "status": {
+    "version": "2.0",
+    "lastUpdated": "2026-02-04T12:49:37.334Z",
+    "activeFeatures": [
+      "ipo",
+      "real-estate",
+      "commodities"
+    ],
+    "primaryFeature": "ipo",
+    "features": {
+      "ipo": {
+        "phase": "do",
+        "phaseNumber": 3,
+        "matchRate": null,
+        "iterationCount": 0,
+        "requirements": [],
+        "documents": {},
+        "timestamps": {
+          "started": "2026-02-04T08:10:05.773Z",
+          "lastUpdated": "2026-02-04T12:49:37.334Z"
+        },
+        "lastFile": "/Users/jake.ko/antigravityProjects/ipo/src/components/TabSelector.tsx"
+      },
+      "real-estate": {
+        "phase": "do",
+        "phaseNumber": 3,
+        "matchRate": null,
+        "iterationCount": 0,
+        "requirements": [],
+        "documents": {},
+        "timestamps": {
+          "started": "2026-02-04T08:10:22.510Z",
+          "lastUpdated": "2026-02-04T08:10:22.510Z"
+        },
+        "lastFile": "/Users/jake.ko/antigravityProjects/ipo/src/app/api/real-estate/route.ts"
+      },
+      "commodities": {
+        "phase": "do",
+        "phaseNumber": 3,
+        "matchRate": null,
+        "iterationCount": 0,
+        "requirements": [],
+        "documents": {},
+        "timestamps": {
+          "started": "2026-02-04T12:49:00.925Z",
+          "lastUpdated": "2026-02-04T12:49:00.925Z"
+        },
+        "lastFile": "/Users/jake.ko/antigravityProjects/ipo/src/app/api/commodities/route.ts"
+      }
+    },
+    "pipeline": {
+      "currentPhase": 1,
+      "level": "Dynamic",
+      "phaseHistory": []
+    },
+    "session": {
+      "startedAt": "2026-02-04T07:53:40.103Z",
+      "onboardingCompleted": false,
+      "lastActivity": "2026-02-04T12:49:37.334Z"
+    },
+    "history": [
+      {
+        "timestamp": "2026-02-04T08:10:05.773Z",
+        "feature": "ipo",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-04T08:10:22.510Z",
+        "feature": "real-estate",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-04T08:10:30.983Z",
+        "feature": "ipo",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-04T08:11:12.600Z",
+        "feature": "ipo",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-04T08:11:25.228Z",
+        "feature": "ipo",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-04T08:20:32.227Z",
+        "feature": "ipo",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-04T08:20:48.927Z",
+        "feature": "ipo",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-04T08:24:06.957Z",
+        "feature": "ipo",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-04T08:25:11.507Z",
+        "feature": "ipo",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-04T08:26:06.450Z",
+        "feature": "ipo",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-04T12:48:47.406Z",
+        "feature": "ipo",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-04T12:49:00.925Z",
+        "feature": "commodities",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-04T12:49:26.551Z",
+        "feature": "ipo",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-04T12:49:37.334Z",
+        "feature": "ipo",
+        "phase": "do",
+        "action": "updated"
+      }
+    ]
+  }
+}
