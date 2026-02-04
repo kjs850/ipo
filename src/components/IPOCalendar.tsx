@@ -140,6 +140,27 @@ export default function IPOCalendar() {
                                     <h3 className="text-3xl font-black text-white tracking-tight leading-tight">
                                         {ipo.name}
                                     </h3>
+
+                                    {/* Real-time Stock Price (For Completed) */}
+                                    {ipo.currentPrice && ipo.profitRate && (
+                                        <div className="bg-slate-900 rounded-xl p-3 border border-slate-700/80 flex items-center justify-between shadow-inner">
+                                            <div className="flex items-center gap-2">
+                                                <span className="w-2 h-2 rounded-full bg-red-500 animate-pulse"></span>
+                                                <span className="text-xs font-bold text-gray-400">현재가 (실시간)</span>
+                                            </div>
+                                            <div className="flex items-baseline gap-2">
+                                                <span className="text-xl font-black text-white font-mono tracking-tight">
+                                                    {ipo.currentPrice}원
+                                                </span>
+                                                <span className={`text-sm font-black px-2 py-0.5 rounded-md ${parseFloat(ipo.profitRate) >= 0
+                                                        ? 'bg-red-500/20 text-red-400'
+                                                        : 'bg-blue-500/20 text-blue-400'
+                                                    }`}>
+                                                    {parseFloat(ipo.profitRate) >= 0 ? '+' : ''}{ipo.profitRate}%
+                                                </span>
+                                            </div>
+                                        </div>
+                                    )}
                                 </div>
 
                                 {/* Divider */}
